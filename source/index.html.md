@@ -1249,7 +1249,7 @@ void
 ```csharp
 using Ont.SmartContract.Framework;
 using Ont.SmartContract.Framework.Services.Ont;
-
+using Ont.SmartContract.Framework.Services.System;
 
 namespace Contract1
 {
@@ -1283,7 +1283,7 @@ IScriptContainer
 ```csharp
 using Ont.SmartContract.Framework;
 using Ont.SmartContract.Framework.Services.Ont;
-
+using Ont.SmartContract.Framework.Services.System;
 
 namespace Contract1
 {
@@ -1317,7 +1317,7 @@ byte[]
 ```csharp
 using Ont.SmartContract.Framework;
 using Ont.SmartContract.Framework.Services.Ont;
-
+using Ont.SmartContract.Framework.Services.System;
 
 namespace Contract1
 {
@@ -1351,7 +1351,7 @@ byte[]
 ```csharp
 using Ont.SmartContract.Framework;
 using Ont.SmartContract.Framework.Services.Ont;
-
+using Ont.SmartContract.Framework.Services.System;
 
 namespace Contract1
 {
