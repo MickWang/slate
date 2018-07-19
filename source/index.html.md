@@ -35,12 +35,19 @@ This class provides a set of methods for accessing blockchain data.
 
 ```csharp
 
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
 {
      public static void Main()
      {
          uint height = Blockchain.GetHeight();
      }
+}
 }
 ```
 
@@ -59,12 +66,19 @@ uint
 ## Blockchain.GetHeader
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+        }
+    }
 }
 ```
 
@@ -72,9 +86,9 @@ This interface is used to get block header by height.
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-height    | uint | header of block
+| Parameter | Type | Description     |
+| --------- | ---- | --------------- |
+| height    | uint | header of block |
 
 ### Return Value
 
@@ -83,13 +97,20 @@ Header
 ## Blockchain.GetBlock
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Block bl = Blockchain.GetBlock(block);
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Block bl = Blockchain.GetBlock(block);
+        }
+    }
 }
 ```
 
@@ -97,9 +118,9 @@ This interface is used to get block by block hash.
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-hash      | byte[] | The hash of the block
+| Parameter | Type   | Description           |
+| --------- | ------ | --------------------- |
+| hash      | byte[] | The hash of the block |
 
 ### Return Value
 
@@ -108,13 +129,20 @@ Block
 ## Blockchain.GetTransaction
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         byte[] txid = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Transaction transaction = Blockchain.GetTransaction(txid);
-     }
+    public class Contract1: SmartContract
+    {
+         public static void Main()
+         {
+             byte[] txid = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+             Transaction transaction = Blockchain.GetTransaction(txid);
+         }
+    }
 }
 ```
 
@@ -122,9 +150,9 @@ This interface is used to get transaction by transaction hash.
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-txid      | byte[] | The id of the transaction
+| Parameter | Type   | Description               |
+| --------- | ------ | ------------------------- |
+| txid      | byte[] | The id of the transaction |
 
 ### Return Value
 
@@ -133,13 +161,20 @@ Transaction
 ## Blockchain.GetContract
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         byte[] script_hash = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Contract contract = Blockchain.GetContract(script_hash);
-     }
+    public class Contract1: SmartContract
+    {
+         public static void Main()
+         {
+             byte[] script_hash = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+             Contract contract = Blockchain.GetContract(script_hash);
+         }
+    }
 }
 ```
 
@@ -147,9 +182,9 @@ This method is to get contract by contract hash.
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-script_hash | byte[] | The script hash of the contract
+| Parameter   | Type   | Description                     |
+| ----------- | ------ | ------------------------------- |
+| script_hash | byte[] | The script hash of the contract |
 
 ### Return Value
 
@@ -158,7 +193,13 @@ Contract
 ## Blockchain.GetTransactionHeight
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
 {
      public static void Main()
      {
@@ -166,15 +207,16 @@ public class Contract1: FunctionCode
          uint height = Blockchain.GetTransactionHeight(txid);
      }
 }
+}
 ```
 
 This interface is used to get height of transaction in block by transaction hash.
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-txid | byte[] | The id of the transaction
+| Parameter | Type   | Description               |
+| --------- | ------ | ------------------------- |
+| txid      | byte[] | The id of the transaction |
 
 ### Return Value
 
@@ -185,7 +227,13 @@ uint
 ## Header.Hash
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
 {
      public static void Main()
      {
@@ -200,9 +248,9 @@ This interface is used to get hash of block
 
 ### Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
- |  |  
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+|           |
 
 ### Return Value
 
@@ -213,13 +261,20 @@ byte[]
 ## Header.Version
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-         uint version = header.Version;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+            uint version = header.Version;
+        }
+    }
 }
 ```
 
@@ -240,13 +295,20 @@ uint
 ## Header.PrevHash
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-         byte[] prevHash = header.PrevHash;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+            byte[] prevHash = header.PrevHash;
+        }
+    }
 }
 ```
 
@@ -267,12 +329,19 @@ byte[]
 ## Header.Index
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-         uint index = header.Index;
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+            uint index = header.Index;
+        }
      }
 }
 ```
@@ -294,13 +363,20 @@ uint
 ## Header.MerkleRoot
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-         byte[] mRoot = header.MerkleRoot;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+            byte[] mRoot = header.MerkleRoot;
+        }
+    }
 }
 ```
 
@@ -321,13 +397,20 @@ byte[]
 ## Header.Timestamp
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-         uint timestamp = header.Timestamp;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+            uint timestamp = header.Timestamp;
+        }
+    }
 }
 ```
 
@@ -348,13 +431,20 @@ uint
 ## Header.ConsensusData
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-         ulong cdata = header.ConsensusData;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+            ulong cdata = header.ConsensusData;
+        }
+    }
 }
 ```
 
@@ -375,12 +465,19 @@ ulong
 ## Header.NextConsensus
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         Header header = Blockchain.GetHeader(9999);
-         byte[] nextConsensus = header.NextConsensus;
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Header header = Blockchain.GetHeader(9999);
+            byte[] nextConsensus = header.NextConsensus;
+        }
      }
 }
 ```
@@ -404,13 +501,20 @@ byte[]
 ## Block.GetTransactionCount()
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Block bl = Blockchain.GetBlock(block);
-         int count = bl.GetTransactionCount();
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Block bl = Blockchain.GetBlock(block);
+            int count = bl.GetTransactionCount();
+        }
      }
 }
 ```
@@ -431,14 +535,21 @@ int
 ## Block.GetTransactions()
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Block bl = Blockchain.GetBlock(block);
-         Transaction[] transactions = bl.GetTransactions();
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Block bl = Blockchain.GetBlock(block);
+            Transaction[] transactions = bl.GetTransactions();
+        }
+    }
 }
 ```
 
@@ -459,14 +570,21 @@ Transaction[]
 ## Block.GetTransaction(int index)
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Block bl = Blockchain.GetBlock(block);
-         Transaction transaction = bl.GetTransaction(1);
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Block bl = Blockchain.GetBlock(block);
+            Transaction transaction = bl.GetTransaction(1);
+        }
+    }
 }
 ```
 
@@ -474,8 +592,8 @@ This interface is used to get  transaction according index in block
 
 ### Parameters
 
-| Parameter | Type | Description                            |
-| --------- | ---- | -------------------------------------- |
+| Parameter | Type | Description                |
+| --------- | ---- | -------------------------- |
 | index     | int  | transaction index of block |
 
 ### Return Value
@@ -489,15 +607,22 @@ Transaction
 ## Transaction.Hash
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Block bl = Blockchain.GetBlock(block);
-         Transaction transaction = bl.GetTransaction(1);
-         byte[] hash = transaction.Hash;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Block bl = Blockchain.GetBlock(block);
+            Transaction transaction = bl.GetTransaction(1);
+            byte[] hash = transaction.Hash;
+        }
+    }
 }
 
 ```
@@ -519,15 +644,22 @@ byte[]
 ## Transaction.Type
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Block bl = Blockchain.GetBlock(block);
-         Transaction transaction = bl.GetTransaction(1);
-         byte ttype = transaction.Type;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Block bl = Blockchain.GetBlock(block);
+            Transaction transaction = bl.GetTransaction(1);
+            byte ttype = transaction.Type;
+        }
+    }
 }
 
 ```
@@ -549,15 +681,22 @@ byte
 ## Transaction.GetAttributes()
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-        byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Block bl = Blockchain.GetBlock(block);
-         Transaction transaction = bl.GetTransaction(1);
-         TransactionAttribute[] attributes = transaction.GetAttributes();
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] block = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Block bl = Blockchain.GetBlock(block);
+            Transaction transaction = bl.GetTransaction(1);
+            TransactionAttribute[] attributes = transaction.GetAttributes();
+        }
+    }
 }
 
 ```
@@ -581,16 +720,22 @@ TransactionAttribute[]
 ## Contract.Script
 
 ```csharp
-public class Contract1: FunctionCode
-{
-     public static void Main()
-     {
-          byte[] script_hash = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
-         Contract contract = Blockchain.GetContract(script_hash);
-         byte[] scrip = contract.Script;
-     }
-}
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
 
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] script_hash = new byte[] {206, 240, 165, 25, 76, 228, 58, 100, 117, 184, 213, 171, 61, 96, 34, 234, 129, 116, 60, 71, 11, 231, 143, 195, 123, 5, 190, 250, 182, 14, 152};
+            Contract contract = Blockchain.GetContract(script_hash);
+            byte[] scrip = contract.Script;
+        }
+    }
+}
 ```
 
 This interface is used to get script of contract according to contract script hash.
@@ -610,25 +755,31 @@ byte[]
 ## Contract.Create
 
 ```csharp
-public class Contract1 : FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-    public static void Main()
+    public class Contract1: SmartContract
     {
-        byte[] script = new byte[] { 116, 107, 0, 97, 116, 0, 147, 108, 118, 107, 148, 121, 116, 81, 147, 108, 118, 107, 148, 121, 147, 116, 0, 148, 140, 108, 118, 107, 148, 114, 117, 98, 3, 0, 116, 0, 148, 140, 108, 118, 107, 148, 121, 97, 116, 140, 108, 118, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 108, 117, 102 }; 
-      
-        byte[] parameter_list = { 2, 2 };
-        byte return_type = 2;
-        bool need_storage = false;
-        string name = "contractName";
-        string version = "1";
-        string author = "test";
-        string email = "test@ont.io";
-        string description = "this is a test contract";
-      
-         Contract contract = Contract.Create(script, true,name,version,author,email,description);
+        public static void Main()
+        {
+            byte[] script = new byte[] { 116, 107, 0, 97, 116, 0, 147, 108, 118, 107, 148, 121, 116, 81, 147, 108, 118, 107, 148, 121, 147, 116, 0, 148, 140, 108, 118, 107, 148, 114, 117, 98, 3, 0, 116, 0, 148, 140, 108, 118, 107, 148, 121, 97, 116, 140, 108, 118, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 108, 117, 102 }; 
+
+            byte[] parameter_list = { 2, 2 };
+            byte return_type = 2;
+            bool need_storage = false;
+            string name = "contractName";
+            string version = "1";
+            string author = "test";
+            string email = "test@ont.io";
+            string description = "this is a test contract";
+        
+            Contract contract = Contract.Create(script, true,name,version,author,email,description);
+        }
     }
 }
-
 ```
 
 This interface is used to create a smart contract
@@ -654,22 +805,29 @@ Contract
 ## Contract.Migrate
 
 ```csharp
-public class Contract1 : FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-    public static void Main(byte[] signature)
+    public class Contract1: SmartContract
     {
-        byte[] script = new byte[] { 116, 107, 0, 97, 116, 0, 147, 108, 118, 107, 148, 121, 116, 81, 147, 108, 118, 107, 148, 121, 147, 116, 0, 148, 140, 108, 118, 107, 148, 114, 117, 98, 3, 0, 116, 0, 148, 140, 108, 118, 107, 148, 121, 97, 116, 140, 108, 118, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 108, 117, 102 }; 
-      
-        byte[] parameter_list = { 2, 2 };
-        byte return_type = 2;
-        bool need_storage = true;
-        string name = "contractName";
-        string version = "1";
-        string author = "test";
-        string email = "test@ont.io";
-        string description = "this is a test contract";
-      
-         Contract contract = Contract.Migrate(script, true,name,version,author,email,description);
+        public static void Main(byte[] signature)
+        {
+            byte[] script = new byte[] { 116, 107, 0, 97, 116, 0, 147, 108, 118, 107, 148, 121, 116, 81, 147, 108, 118, 107, 148, 121, 147, 116, 0, 148, 140, 108, 118, 107, 148, 114, 117, 98, 3, 0, 116, 0, 148, 140, 108, 118, 107, 148, 121, 97, 116, 140, 108, 118, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 116, 108, 118, 140, 107, 148, 109, 108, 117, 102 }; 
+        
+            byte[] parameter_list = { 2, 2 };
+            byte return_type = 2;
+            bool need_storage = true;
+            string name = "contractName";
+            string version = "1";
+            string author = "test";
+            string email = "test@ont.io";
+            string description = "this is a test contract";
+        
+            Contract contract = Contract.Migrate(script, true,name,version,author,email,description);
+         }
     }
 }
 
@@ -698,14 +856,20 @@ Contract
 ## Contract.Destroy()
 
 ```csharp
-public class Contract1: FunctionCode
-{
-     public static void Main()
-     {
-         Contract.Destroy();
-     }
-}
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
 
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Contract.Destroy();
+        }
+    }
+}
 ```
 
 This interface is used to destroy a contract.script and storage of contract will be removed.
@@ -725,7 +889,13 @@ void
 ## Contract.StorageContext
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
 {
      public static void Main()
      {
@@ -756,7 +926,13 @@ StorageContext
 ## Storage.CurrentContext
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
 {
      public static void Main()
      {
@@ -783,7 +959,13 @@ StorageContext
 ## Storage.Get(StorageContext,byte[])
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
 {
      public static void Main()
      {
@@ -813,7 +995,13 @@ byte[]
 ## Storage.Get(StorageContext,string)
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
 {
      public static void Main()
      {
@@ -843,15 +1031,22 @@ byte[]
 ## Storage.Put(StorageContext,string/byte[],string/byte[])
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         StorageContext sc = Storage.CurrentContext;
-         string key = "key";
-         string val = "value";
-         Storage.Put(sc,key,val);
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            StorageContext sc = Storage.CurrentContext;
+            string key = "key";
+            string val = "value";
+            Storage.Put(sc,key,val);
+        }
+    }
 }
 
 ```
@@ -875,14 +1070,21 @@ void
 ## Storage.Delete(StorageContext,string/byte[])
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         StorageContext sc = Storage.CurrentContext;
-         string key = "key";
-         Storage.Delete(sc,key);
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            StorageContext sc = Storage.CurrentContext;
+            string key = "key";
+            Storage.Delete(sc,key);
+        }
+    }
 }
 
 ```
@@ -907,14 +1109,20 @@ void
 ## Runtime.Time
 
 ```csharp
-public class Contract1: FunctionCode
-{
-     public static void Main()
-     {
-         uint rtime = Runtime.Time;
-     }
-}
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
 
+
+namespace Contract1
+{
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            uint rtime = Runtime.Time;
+        }
+    }
+}
 ```
 
 This interface is used to get current block time
@@ -934,13 +1142,20 @@ uint
 ## Runtime.CheckWitness(byte[])
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-         byte[] pubKey = { 2, 123, 48, 51, 62, 13, 14, 101, 82, 174, 109, 29, 169, 249, 64, 159, 85, 30, 53, 238, 151, 25, 48, 94, 148, 93, 196, 220, 186, 153, 132, 86, 202 };
-        bool result = Runtime.CheckWitness(pubKey);
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] pubKey = { 2, 123, 48, 51, 62, 13, 14, 101, 82, 174, 109, 29, 169, 249, 64, 159, 85, 30, 53, 238, 151, 25, 48, 94, 148, 93, 196, 220, 186, 153, 132, 86, 202 };
+            bool result = Runtime.CheckWitness(pubKey);
+        }
+    }
 }
 
 ```
@@ -962,12 +1177,19 @@ bool
 ## Runtime.Notify(object[])
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          Runtime.Notify("Hello", "World", Blockchain.GetHeight());
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Runtime.Notify("Hello", "World", Blockchain.GetHeight());
+        }
+    }
 }
 
 ```
@@ -989,11 +1211,18 @@ void
 ## Runtime.Log(string)
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          Runtime.Log("Hello world");
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            Runtime.Log("Hello world");
+        }
      }
 }
 
@@ -1018,11 +1247,18 @@ void
 ## ExecutionEngine.ScriptContainer
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          IScriptContainer isc = ExecutionEngine.ScriptContainer;
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            IScriptContainer isc = ExecutionEngine.ScriptContainer;
+        }
      }
 }
 
@@ -1045,12 +1281,19 @@ IScriptContainer
 ## ExecutionEngine.ExecutingScriptHash
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          byte[] scriptHash = ExecutionEngine.ExecutingScriptHash;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] scriptHash = ExecutionEngine.ExecutingScriptHash;
+        }
+    }
 }
 
 ```
@@ -1072,12 +1315,19 @@ byte[]
 ## ExecutionEngine.CallingScriptHash
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          byte[] callingScriptHash = ExecutionEngine.CallingScriptHash;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] callingScriptHash = ExecutionEngine.CallingScriptHash;
+        }
+    }
 }
 
 ```
@@ -1099,12 +1349,19 @@ byte[]
 ## ExecutionEngine.EntryScriptHash
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static void Main()
-     {
-          byte[] entryScriptHash = ExecutionEngine.EntryScriptHash;
-     }
+    public class Contract1: SmartContract
+    {
+        public static void Main()
+        {
+            byte[] entryScriptHash = ExecutionEngine.EntryScriptHash;
+        }
+    }
 }
 
 ```
@@ -1128,22 +1385,28 @@ byte[]
 ## Native.Invoke(byte version, byte[] address, byte[] method, object args)
 
 ```csharp
-public class Contract1: FunctionCode
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+
+
+namespace Contract1
 {
-     public static readonly byte[] ontAddr = "AFmseVrdL9f9oyCzZefL9tG6UbvhUMqNMV".ToScriptHash();
-     struct Transfer
+    public class Contract1: SmartContract
+    {
+        public static readonly byte[] ontAddr = "AFmseVrdL9f9oyCzZefL9tG6UbvhUMqNMV".ToScriptHash();
+        struct Transfer
         {
             public byte[] From;
             public byte[] To;
             public ulong Value;
         }
-     public static bool Main()
-     {
+        public static bool Main()
+        {
 
-  		  byte[] from = { 2, 123, 48, 51, 62, 13, 14, 101, 82, 174, 109, 29, 169, 249, 64, 159, 85, 30, 53, 238, 151, 25, 48, 94, 148, 93, 196, 220, 186, 153, 132, 86, 202 };
-         byte[] to = { 2, 123, 48, 51, 62, 13, 14, 101, 82, 174, 109, 29, 169, 249, 64, 159, 85, 30, 53, 238, 151, 25, 48, 94, 148, 93, 196, 220, 186, 153, 132, 86, 202 };
-         ulong value = 100;
-     	  Transfer param = new Transfer { From = from, To = to, Value = value };
+            byte[] from = { 2, 123, 48, 51, 62, 13, 14, 101, 82, 174, 109, 29, 169, 249, 64, 159, 85, 30, 53, 238, 151, 25, 48, 94, 148, 93, 196, 220, 186, 153, 132, 86, 202 };
+            byte[] to = { 2, 123, 48, 51, 62, 13, 14, 101, 82, 174, 109, 29, 169, 249, 64, 159, 85, 30, 53, 238, 151, 25, 48, 94, 148, 93, 196, 220, 186, 153, 132, 86, 202 };
+            ulong value = 100;
+            Transfer param = new Transfer { From = from, To = to, Value = value };
             object[] p = new object[1];
             p[0] = param;
             byte[] ret = Native.Invoke(0, ontAddr, "transfer", p);
@@ -1152,7 +1415,8 @@ public class Contract1: FunctionCode
                 return false;
             };
             return true;
-     }
+        }
+    }
 }
 
 ```
@@ -1195,14 +1459,14 @@ string b = a.AsString();
 You can use map and struct to store data as following
 
 ```csharp
-using Neo.SmartContract.Framework;
-using Neo.SmartContract.Framework.Services.Neo;
-using Neo.SmartContract.Framework.Services.System;
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+using Ont.SmartContract.Framework.Services.System;
 using System;
 using System.ComponentModel;
 using System.Numerics;
 using System.Text;
-using Helper = Neo.SmartContract.Framework.Helper;
+using Helper = Ont.SmartContract.Framework.Helper;
 
 namespace DID
 {
@@ -1323,9 +1587,9 @@ namespace DID
 Currently  action is not supported ,so you need to replace action with following event codes:
 
 ```csharp
-using Neo.SmartContract.Framework;
-using Neo.SmartContract.Framework.Services.Neo;
-using Neo.SmartContract.Framework.Services.System;
+using Ont.SmartContract.Framework;
+using Ont.SmartContract.Framework.Services.Ont;
+using Ont.SmartContract.Framework.Services.System;
 using System;
 using System.ComponentModel;
 using System.Numerics;
